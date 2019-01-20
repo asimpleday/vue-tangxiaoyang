@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul >
+        <li v-for="(item, index) in fruit" :key="index">{{index}} —— {{item}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            fruit: ['橙子', '橘子', '香蕉', '橘子']
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item, index) in fruit">{{index}} —— {{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="item in fruit">{{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="(item, index) in user">{{index}} —— {{item}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            fruit: ['橙子', '橘子', '香蕉', '橘子'],
+            user: {
+                username: 'tom',
+                age: 24,
+                likes: 'eat'
+            }
+        }
+    })
+</script>
+</body>
+</html>
