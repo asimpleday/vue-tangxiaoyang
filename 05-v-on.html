@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--<button v-on:click="sayHi">click me</button>-->
+    <button @click="sayHi">click me</button>
+    <button @click="add">add</button>
+    <input type="text" v-model="fruit">
+    <div>
+        <ul>
+            <li v-for="item in fruits">{{item}}</li>
+        </ul>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            fruits: ['苹果','香蕉'],
+            fruit: ''
+        },
+        methods: {
+            sayHi: function () {
+                alert('hi');
+            },
+            add(){
+                if(this.fruit){
+                    this.fruits.push(this.fruit);
+                    this.sayHi();
+                    this.fruit = '';
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 300px;
+            margin: 0 auto;
+        }
+        .item{
+            margin-bottom: 20px;
+        }
+        label{
+            display: inline-block;
+            width: 60px;
+        }
+        table{
+            width: 280px;
+            text-align: center;
+            line-height: 2;
+            border-collapse: collapse;
+        }
+        table td{
+            border: #333 solid 1px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <div class="item">
+            <label for="">用户名</label>
+            <input type="text" v-model="userItem.user" placeholder="请输入用户名">
+        </div>
+        <div class="item">
+            <label for="">年龄</label>
+            <input type="text" v-model="userItem.age" placeholder="年龄">
+        </div>
+        <div class="item">
+            <label for="">邮箱</label>
+            <input v-model="userItem.email" type="text" placeholder="邮箱">
+        </div>
+        <div class="item">
+            <button>重置</button>
+            <button @click="addUser">增加</button>
+        </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>序号</td>
+                <td>用户名</td>
+                <td>年龄</td>
+                <td>邮箱</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="(item, index) in users">
+                <td>{{index + 1}}</td>
+                <td>{{item.user}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.email}}</td>
+                <td><a href="javascript:;" @click="itemDelete(index)">删除</a></td>
+            </tr>
+            <tr>
+                <td colspan="5"><a href="javascript:;" @click="batchDelete">删除所有</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            users: [
+                {
+                    user: 'tom',
+                    age: 23,
+                    email: '163@qq.com'
+                },
+                {
+                    user: 'jack',
+                    age: 26,
+                    email: 'jack@qq.com'
+                }
+            ],
+            userItem: {}
+        },
+        methods: {
+            addUser(){
+                if(this.userItem.user && this.userItem.age && this.userItem.email){
+                    this.users.push(this.userItem);
+                    this.userItem = {};
+                }
+            },
+            itemDelete(index){
+                if(confirm('你确定删除第' + (index + 1) + '行用户吗？')){
+                    this.users.splice(index, 1);
+                }
+            },
+            batchDelete(){
+                if(confirm('你确定删除所有吗？')){
+                    this.users = [];
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
