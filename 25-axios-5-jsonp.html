@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="send">click me</button><br>
+    <ul>
+        <li v-for="item in searchArr">{{item}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            searchArr: []
+        },
+        methods: {
+            send(){
+                // https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word=a
+                // https://sp1.baidu.com/5b11fzupBgM18t7jm9iCKT-xh_/sensearch?wd=a&cb=bd_cb_dict3_1548593922119&callback=bd_cb_dict3_1548593922119&_=1548593908683
+                /*this.$http.jsonp('https://sp1.baidu.com/5b11fzupBgM18t7jm9iCKT-xh_/sensearch', {
+                    params: {
+                        wd: 'a'
+                    },
+                    jsonp: 'cb'
+                }).then(function (value) {
+                    console.log(value.data);
+                }).catch(function (reason) {
+
+                })*/
+
+                this.$http.jsonp('https://sug.so.360.cn/suggest', {
+                    params: {
+                        word: 'a',
+                        encodeout: 'utf-8'
+                    }
+                }).then(function (value) {
+                    //console.log(value.data.s);
+                    this.searchArr = value.data.s;
+                }).catch(function (reason) {
+
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

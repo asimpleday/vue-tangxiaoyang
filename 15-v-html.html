@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-html="msg1"></p>
+    <p v-html="msg2"></p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    // v-html 会渲染html标签
+    new Vue({
+        el: '#app',
+        data: {
+            msg1: 'hello',
+            msg2: '<strong>123</strong>'
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+

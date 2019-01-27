@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="fn($event)">click me</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    // 拿到事件对象
+    new Vue({
+        el: '#app',
+        methods: {
+            fn(e){
+                console.log(e.target.innerHTML);
+            }
+        }
+    })
+</script>
+</body>
+</html>

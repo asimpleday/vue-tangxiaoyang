@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p><input type="text" v-model="msg"></p>
+    <p>{{msg}}</p>
+    <p v-text="msg"></p>
+    <p v-html="msg"></p>
+    <p v-once>{{msg}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    // v-once只渲染一次，不会双向绑定
+    new Vue({
+        el: '#app',
+        data: {
+            msg: '<strong>123</strong>1111'
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+
+

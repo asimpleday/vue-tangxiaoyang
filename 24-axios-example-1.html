@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="uid" placeholder="请输入你的github用户名">
+    <img :src="userSrc" alt="">
+    <button @click="send">click me</button><br>
+    <ul>
+        <li v-for="(item, index) in users">{{index}} : {{item}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            uid: '',
+            users: {},
+            userSrc: ''
+        },
+        methods: {
+            send(){
+                let that = this;
+                axios.get(`https://api.github.com/users/${this.uid}`)
+                    .then(function (value) {
+                        that.users = value.data;
+                        that.userSrc = value.data.avatar_url;
+                    }).catch(function (reason) {
+                        console.log(reason);
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

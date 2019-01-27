@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p >{{num | my-filter(2)}}</p>
+    <p >{{num | my-filter(3)}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    // 局部过滤器
+    new Vue({
+        el: '#app',
+        data: {
+            num: 12.5488741
+        },
+        filters: {
+            'my-filter': function (value, arg) {
+                return value.toFixed(arg);
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

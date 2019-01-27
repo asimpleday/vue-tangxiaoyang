@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" >
+    <button @click="send">click me</button>
+    <ul>
+        <li v-for="(item, index) in user">{{index}} --- {{item}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    // axios 发送ajax请求
+    new Vue({
+        el: '#app',
+        data: {
+            user: {'age': 26}
+        },
+        methods: {
+            send(){
+              let that = this;
+              axios({
+                  method: 'get',
+                  url: 'user.json'
+              }).then(function (value) {
+                  that.user = value.data;
+              }).catch(function (reason) {
+                    console.log(reason);
+              })
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

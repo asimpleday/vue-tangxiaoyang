@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active1{
+            width: 200px;
+        }
+        .active2{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="isActive=!isActive">toggle</button><br>
+    <!--<img src="img/dog.jpg" :class="aa">-->
+    <!--<img src="img/dog.jpg" :class="[aa, bb]">-->
+    <img src="img/dog.jpg" :class="{active1: isActive1, active2: isActive2}">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    // 动态绑定多个类名
+    new Vue({
+        el: '#app',
+        data: {
+            aa: 'active1',
+            bb: 'active2',
+            isActive1: true,
+            isActive2: false
+        }
+    })
+</script>
+</body>
+</html>
+
